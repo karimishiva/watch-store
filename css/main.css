@@ -1,0 +1,627 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  background-color: #485461;
+  background-image: linear-gradient(135deg, #485461 0%, #000 74%);
+}
+
+.main {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  box-shadow: 5px 10px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.navigation {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: #FFF;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu .logo {
+  text-align: center;
+}
+
+.menu .logo h3 {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.menu .logo h3 span {
+  font-weight: 300;
+  color: #c39052;
+}
+
+.hamburger-menu {
+  height: 4rem;
+  width: 3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger-menu .bar {
+  background-color: #FFF;
+  width: 1.9rem;
+  height: 1.5px;
+  position: relative;
+  border-radius: 2px;
+  transition: .5s;
+}
+
+.hamburger-menu .bar:before,
+.hamburger-menu .bar:after {
+  width: inherit;
+  height: inherit;
+  background-color: #FFF;
+  position: absolute;
+  content: "";
+  transition: .5s;
+}
+
+.hamburger-menu .bar:before {
+  transform: translateY(-9px);
+}
+
+.hamburger-menu .bar:after {
+  transform: translateY(9px);
+}
+
+.cont {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../img/close-up-clockwise-black-clock-face-background-wristwatch-retro-style_9635-1157.jpg") !important;
+  background-size: cover;
+  overflow: hidden;
+  transform-origin: left;
+  transition: 0.5s;
+  z-index: 5;
+}
+
+.cont .app {
+  position: absolute;
+  width: 700px;
+  height: 500px;
+  z-index: 10;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 25px 0 25px 0;
+}
+
+.cont .app .overlay {
+  display: flex;
+  position: absolute;
+  background: url("../img/lan.png") no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px 0 25px 0;
+  animation: overlay-anim 2s ease;
+  animation-delay: 0.5s;
+}
+
+.cont .app .overlay .text-1 {
+  animation: apear 5s ease;
+  position: absolute;
+  right: 0;
+  margin: 100px;
+  text-align: center;
+}
+
+.cont .app .overlay .text-1 h3 {
+  font-size: 45px;
+  font-weight: 600;
+  color: #c39052;
+}
+
+.cont .app .overlay .text-1 h3 span {
+  color: #04293a;
+}
+
+.cont .app .overlay .text-1 p {
+  font-size: 25px;
+  color: #81949c;
+}
+
+.cont .app .overlay .text-1 a {
+  right: 0;
+  transform: translate(-40%, -50%);
+  margin-top: 50px;
+  position: absolute;
+  width: 190px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: #165a79;
+  letter-spacing: 2px;
+  color: #c39052;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60px;
+  border: 2px solid #04293a;
+  box-shadow: inset 0 0 30px #04293a;
+  overflow: hidden;
+}
+
+.cont .app .overlay .text-1 a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 50%;
+  height: 100%;
+  background: rgba(225, 225, 225, 0.1);
+  transition: 0.5s;
+  transform: skewX(-15deg);
+}
+
+.cont .app .overlay .text-1 a:hover:before {
+  left: 210px;
+}
+
+.cont .app .overlay .text-1 a:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 50px;
+  height: 100%;
+  background: rgba(225, 225, 225, 0.1);
+  transition: 0.5s;
+  transform: skewX(-15deg);
+  transition: 0.8s;
+}
+
+.cont .app .overlay .text-1 a:hover:after {
+  left: 210px;
+}
+
+@keyframes overlay-anim {
+  from {
+    background-position: center;
+  }
+  to {
+    background-position: bottom !important;
+  }
+}
+
+@keyframes apear {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.bar.active {
+  transform: rotate(360deg);
+  background-color: transparent;
+}
+
+.bar.active:before {
+  transform: translateY(0) rotate(45deg);
+}
+
+.bar.active:after {
+  transform: translateY(0) rotate(-45deg);
+}
+
+.cont.active {
+  animation: main-animation 0.5s ease;
+  transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+  cursor: pointer;
+}
+
+@keyframes main-animation {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+  }
+}
+
+.links {
+  position: absolute;
+  width: 30%;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links ul {
+  list-style: none;
+}
+
+.links a {
+  padding: 1rem 0;
+  color: #eee;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: hide 0.5s forwards ease;
+}
+
+.links a:hover {
+  border-bottom: 1px solid #c39052;
+}
+
+.links.active a {
+  animation: apear 0.5s forwards ease var(--i);
+}
+
+@keyframes apear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.brands {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2F4F5;
+}
+
+.brands ul {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.brands ul li {
+  margin-right: 56px;
+  text-align: center;
+}
+
+.brands ul li a {
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  font-size: 14px;
+  line-height: 40px;
+  height: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.brands ul li .all {
+  color: #2683ae !important;
+  text-transform: none;
+  font-size: 12px;
+  position: absolute;
+  right: 70px;
+  letter-spacing: 1px;
+}
+
+.feature {
+  background-color: #FFF;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.feature .main-row {
+  justify-content: space-between;
+}
+
+.feature .text {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  width: 200px;
+  margin: 20px;
+}
+
+.feature .image img {
+  width: 90px;
+}
+
+.Explore {
+  background-color: #FFF;
+  padding-top: 40px;
+  padding-bottom: 70px;
+}
+
+.Explore h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  letter-spacing: 5px;
+}
+
+.Explore .container {
+  display: flex;
+}
+
+.Explore .watch-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.Explore .watch-card .image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.Explore .watch-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+.Explore .watch-card p {
+  text-align: center;
+}
+
+.Explore .watch-card a {
+  text-decoration: none;
+  color: #c39052;
+}
+
+.Explore .watch-card a:hover {
+  color: #04293a;
+}
+
+.Explore img {
+  width: 100%;
+  transition: transform 1s linear;
+}
+
+.Explore img:hover {
+  transform: scale(1.5);
+}
+
+.application {
+  width: 100%;
+  min-height: 80vh;
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.application .text {
+  position: absolute;
+  right: 70px;
+  top: 30%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  color: #FFF;
+}
+
+.application .text p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.application .text h5 {
+  margin-top: 20px;
+}
+
+.application .text .btn {
+  width: 132px;
+  height: 39px;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+.application .text .btn:hover {
+  opacity: 0.7;
+}
+
+.application .text .ios {
+  background: url("//static.chrono24.com/images/default/app-store-badges/apple-app-store_en.svg");
+  background-position: center;
+  background-size: cover;
+  margin-right: 20px;
+}
+
+.application .text .android {
+  background: url("//static.chrono24.com/images/default/app-store-badges/play_en.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.newCollection {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #FFF;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.newCollection h2 {
+  margin-bottom: 35px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.newCollection h2:before {
+  content: '';
+  display: inline-block;
+  width: 60px;
+  margin-right: 30px;
+  border-bottom: 1px solid #DBB86F;
+  margin-bottom: 8px;
+}
+
+.newCollection h2:after {
+  content: '';
+  display: inline-block;
+  width: 60px;
+  margin-left: 30px;
+  border-bottom: 1px solid #DBB86F;
+  margin-bottom: 8px;
+}
+
+.newCollection .models {
+  transition: transform 0.9s ease;
+}
+
+.newCollection .models h5 {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #81949c;
+  text-transform: uppercase;
+}
+
+.newCollection .models h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+}
+
+.newCollection .models img {
+  transition: transform 0.9s ease;
+  cursor: pointer;
+}
+
+.newCollection .models img:hover {
+  transform: scale(1.1);
+}
+
+.newCollection .show {
+  background-color: inherit;
+  border: 1px solid #c39052;
+  border-radius: 0;
+  width: 300px;
+  margin-top: 50px;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 8px;
+  color: #a2743b;
+  transition: all 0.5s ease;
+}
+
+.newCollection .show:hover {
+  background-color: #a2743b;
+  color: #FFF;
+}
+
+footer {
+  background-image: linear-gradient(180deg, #04293a, #000);
+}
+
+.footer-section {
+  width: 100%;
+  min-height: 40vh;
+}
+
+.footer-section .container {
+  display: flex;
+}
+
+.footer-section .section-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-section .section-left h4 {
+  color: #FFF;
+}
+
+.footer-section .section-left a {
+  color: #81949c;
+  text-decoration: none;
+}
+
+.footer-section .section-left a:hover {
+  color: #FFF;
+}
+
+.footer-section .section-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer-section .section-right img {
+  width: 200px;
+  height: 75px;
+}
+
+.footer-section .section-right .social {
+  margin: 20px;
+}
+
+.footer-section .section-right .social a {
+  font-size: 24px;
+  margin: 20px;
+  color: #81949c;
+}
+
+.footer-section .section-right .social a:hover {
+  color: #FFF;
+}
+/*# sourceMappingURL=main.css.map */
